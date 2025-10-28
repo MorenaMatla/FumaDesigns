@@ -24,12 +24,13 @@ def create_app(config_class=Config):
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Please log in to access this page.'
     
-    from app.routes import auth, dashboard, exams, admin, ai_analytics
+    from app.routes import auth, dashboard, exams, admin, ai_analytics, gdpr
     app.register_blueprint(auth.bp)
     app.register_blueprint(dashboard.bp)
     app.register_blueprint(exams.bp)
     app.register_blueprint(admin.bp)
     app.register_blueprint(ai_analytics.bp)
+    app.register_blueprint(gdpr.bp)
     
     with app.app_context():
         db.create_all()

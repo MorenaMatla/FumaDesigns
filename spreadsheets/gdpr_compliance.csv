@@ -3,9 +3,9 @@ Article 6 - Lawfulness,Legal basis for processing,Implemented,User consent requi
 Article 7 - Consent,Conditions for consent,Implemented,Explicit checkbox consent before account creation with date logging,app/templates/auth/signup.html - consent checkbox
 Article 12 - Transparency,Transparent information,Implemented,Clear privacy policy and terms displayed during signup,app/templates/auth/signup.html
 Article 13 - Information,Information to be provided,Partially Implemented,Privacy notice shown at registration (full policy page to be added),app/routes/auth.py
-Article 15 - Right of Access,Data subject access,Planned,Data export feature in development for user settings page,app/templates/dashboard/settings.html
-Article 16 - Rectification,Right to rectification,Planned,Profile edit functionality to be implemented,Settings page
-Article 17 - Erasure,Right to be forgotten,Planned,Account deletion request feature with admin approval,Support system
+Article 15 - Right of Access,Data subject access,Implemented,JSON data export with complete user data including registrations and messages,app/routes/gdpr.py - export_data()
+Article 16 - Rectification,Right to rectification,Implemented,Profile edit form allows users to update name and email,app/routes/gdpr.py - update_profile()
+Article 17 - Erasure,Right to be forgotten,Implemented,Account deletion request feature with confirmation and logging,app/routes/gdpr.py - request_deletion()
 Article 25 - Data Protection by Design,Privacy by design,Implemented,Role-based access control and data classification from start,config.py + app/utils/decorators.py
 Article 30 - Records,Processing records,Implemented,Blockchain maintains immutable audit trail of all registrations,app/utils/blockchain.py
 Article 32 - Security,Security of processing,Implemented,"Password hashing (Werkzeug), HTTPS ready, rate limiting, session security",app/models/user.py + app/__init__.py
@@ -22,9 +22,9 @@ Audit Logging,"Access logs, blockchain records",Legal obligation,Admin only,Perm
 
 Data Subject Rights,,,,,
 Right,Description,How to Exercise,Response Time,Status,
-Right to Access,Request copy of personal data,Settings > Download My Data,30 days,Planned,
-Right to Rectification,Correct inaccurate data,Settings > Edit Profile,30 days,Planned,
-Right to Erasure,Delete personal data,Settings > Request Deletion,30 days,Planned,
+Right to Access,Request copy of personal data,Settings > Download My Data,Immediate,Implemented,
+Right to Rectification,Correct inaccurate data,Settings > Edit Profile,Immediate,Implemented,
+Right to Erasure,Delete personal data,Settings > Request Deletion,30 days,Implemented,
 Right to Restrict Processing,Limit how data is used,Contact Support,30 days,Planned,
 Right to Data Portability,Receive data in portable format,Settings > Export Data,30 days,Planned,
 Right to Object,Object to processing,Contact Support,30 days,Planned,

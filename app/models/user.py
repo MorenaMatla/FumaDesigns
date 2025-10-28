@@ -18,6 +18,8 @@ class User(UserMixin, db.Model):
     role = db.Column(db.String(20), default='STUDENT')
     gdpr_consent = db.Column(db.Boolean, default=False)
     gdpr_consent_date = db.Column(db.DateTime, nullable=True)
+    deletion_requested = db.Column(db.Boolean, default=False)
+    deletion_requested_date = db.Column(db.DateTime, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     last_login = db.Column(db.DateTime, nullable=True)
     is_active = db.Column(db.Boolean, default=True)
