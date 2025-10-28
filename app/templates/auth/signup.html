@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Exam Registration System{% endblock %}
+
+{% block body %}
+<div class="auth-container">
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-5">
+                <div class="auth-card">
+                    <div class="auth-header text-center mb-4">
+                        <h2 class="fw-bold">Create your new account</h2>
+                        <p class="text-muted">now.</p>
+                    </div>
+                    
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <form method="POST" action="{{ url_for('auth.signup') }}">
+                        <div class="mb-3">
+                            <input type="text" class="form-control auth-input" name="name" placeholder="Enter your Names" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="email" class="form-control auth-input" name="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="text" class="form-control auth-input" name="student_id" placeholder="Enter your student ID" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="password" class="form-control auth-input" name="password" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="password" class="form-control auth-input" name="password_confirm" placeholder="Enter your password again" required>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="gdpr_consent" name="gdpr_consent" required>
+                            <label class="form-check-label small" for="gdpr_consent">
+                                I agree to the privacy policy and terms of service
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 auth-btn mb-3">Sign up</button>
+                        
+                        <p class="text-center text-muted">
+                            have an account? <a href="{{ url_for('auth.login') }}" class="text-primary text-decoration-none">Login</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

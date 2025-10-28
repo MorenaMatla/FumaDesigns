@@ -1,6 +1,20 @@
-def main():
-    print("Hello from repl-nix-workspace!")
+from app import create_app, db
+from app.models import User, Exam, Registration, Department, Course, Message, BlockchainRecord
 
+app = create_app()
 
-if __name__ == "__main__":
-    main()
+@app.shell_context_processor
+def make_shell_context():
+    return {
+        'db': db,
+        'User': User,
+        'Exam': Exam,
+        'Registration': Registration,
+        'Department': Department,
+        'Course': Course,
+        'Message': Message,
+        'BlockchainRecord': BlockchainRecord
+    }
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

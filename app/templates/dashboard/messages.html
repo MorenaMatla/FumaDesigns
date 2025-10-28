@@ -1,0 +1,35 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Messages - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title fw-bold mb-4">Messages</h4>
+        
+        {% if messages %}
+        <div class="list-group">
+            {% for msg in messages %}
+            <div class="list-group-item {% if not msg.is_read %}list-group-item-primary{% endif %}">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">{{ msg.subject }}</h6>
+                    <small>{{ msg.created_at.strftime('%d/%m/%Y %H:%M') }}</small>
+                </div>
+                <p class="mb-1">{{ msg.body }}</p>
+                <small class="text-muted">From: {{ msg.sender.name }}</small>
+                {% if not msg.is_read %}
+                <span class="badge bg-primary ms-2">New</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <i class="fas fa-envelope-open fa-4x text-muted mb-3"></i>
+            <h5>No Messages</h5>
+            <p class="text-muted">You don't have any messages yet.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Support - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title fw-bold mb-4">Support Center</h4>
+                
+                <h5 class="mt-4">Frequently Asked Questions</h5>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How do I register for exams?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Navigate to "Register for exams" from the sidebar, select your department, choose courses, and submit. You'll receive a confirmation code to complete the registration.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                What is the blockchain feature?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                All exam registrations are stored on a blockchain to ensure transparency, integrity, and immutable record-keeping. Each registration receives a unique hash that can be verified.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                How is my data protected?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We implement role-based access control, data classification (public, private, confidential, restricted), and GDPR compliance to protect your information. All passwords are securely hashed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4">Contact Support</h5>
+                <form class="mt-3">
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" placeholder="Enter subject">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" rows="4" placeholder="Describe your issue"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title">Contact Information</h6>
+                <p class="mt-3"><i class="fas fa-envelope"></i> support@university.edu</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 8AM - 5PM</p>
+            </div>
+        </div>
+        
+        <div class="card shadow-sm mt-3">
+            <div class="card-body">
+                <h6 class="card-title">Resources</h6>
+                <ul class="list-unstyled mt-3">
+                    <li><a href="#" class="text-decoration-none"><i class="fas fa-book"></i> User Guide</a></li>
+                    <li><a href="#" class="text-decoration-none"><i class="fas fa-video"></i> Video Tutorials</a></li>
+                    <li><a href="#" class="text-decoration-none"><i class="fas fa-file-alt"></i> Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

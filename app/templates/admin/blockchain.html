@@ -1,0 +1,45 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Blockchain Records - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="card-title fw-bold mb-0">Blockchain Records</h4>
+            <span class="badge {% if is_valid %}bg-success{% else %}bg-danger{% endif %}">
+                {% if is_valid %}<i class="fas fa-check-circle"></i> Valid{% else %}<i class="fas fa-times-circle"></i> Invalid{% endif %}
+            </span>
+        </div>
+        
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> <strong>Blockchain Status:</strong> {{ message }}
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Block #</th>
+                        <th>Type</th>
+                        <th>Timestamp</th>
+                        <th>Hash</th>
+                        <th>Previous Hash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for block in blocks %}
+                    <tr>
+                        <td><span class="badge bg-primary">{{ block.block_index }}</span></td>
+                        <td>{{ block.record_type.capitalize() }}</td>
+                        <td>{{ block.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                        <td><code class="small">{{ block.current_hash[:16] }}...</code></td>
+                        <td><code class="small">{{ block.previous_hash[:16] }}...</code></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

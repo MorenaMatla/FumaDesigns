@@ -1,0 +1,153 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}AI Analytics Dashboard - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title fw-bold mb-4"><i class="fas fa-brain"></i> AI Analytics Dashboard</h4>
+                <p class="text-muted">Predictive analytics and insights powered by machine learning</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Registration Trends (Last 30 Days)</h5>
+                <canvas id="trendChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Most Popular Courses</h5>
+                <canvas id="popularCoursesChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">AI Model Performance Metrics</h5>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <h6 class="text-muted small">Success Prediction Accuracy</h6>
+                            <h3 class="fw-bold text-success" id="successAccuracy">--</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <h6 class="text-muted small">Score Prediction R²</h6>
+                            <h3 class="fw-bold text-info" id="scoreR2">--</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <h6 class="text-muted small">Model Status</h6>
+                            <h3 class="fw-bold text-primary">Active</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <h6 class="text-muted small">Predictions Made</h6>
+                            <h3 class="fw-bold text-warning">500+</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h6>Model Details</h6>
+                    <ul class="small">
+                        <li><strong>Algorithm:</strong> Random Forest Classifier & Gradient Boosting Regressor</li>
+                        <li><strong>Training Dataset:</strong> 500 synthetic student records</li>
+                        <li><strong>Features:</strong> GPA, Attendance Rate, Study Hours, Early Registration</li>
+                        <li><strong>Target Variables:</strong> Exam Success Probability, Predicted Score</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: '/analytics/api/registration-trends',
+        type: 'GET',
+        success: function(data) {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Registrations',
+                        data: data.data,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+    });
+    
+    $.ajax({
+        url: '/analytics/api/popular-courses',
+        type: 'GET',
+        success: function(data) {
+            const ctx = document.getElementById('popularCoursesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Registrations',
+                        data: data.data,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    });
+    
+    $.ajax({
+        url: '/analytics/api/predictions',
+        type: 'GET',
+        success: function(data) {
+            if (data.success_accuracy) {
+                $('#successAccuracy').text((data.success_accuracy * 100).toFixed(1) + '%');
+            }
+            if (data.score_r2) {
+                $('#scoreR2').text(data.score_r2.toFixed(3));
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

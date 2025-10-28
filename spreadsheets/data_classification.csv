@@ -1,0 +1,18 @@
+Data Classification,Data Type,Examples,Access Level,Storage Method,Encryption Required
+PUBLIC,Course Information,"Course names, codes, descriptions, department names, exam dates",All users,Database (unencrypted),No
+PRIVATE,Student Information,"Student names, email addresses, student IDs, phone numbers",Student (own data) + Faculty + Admin,Database (encrypted),Yes
+CONFIDENTIAL,Exam Records,"Exam results, registration records, grades, attendance, performance data",Student (own data) + Admin,Database (encrypted) + Blockchain,Yes
+RESTRICTED,Security Data,"Passwords (hashed), security configurations, blockchain private keys, admin logs, API keys",Admin only,Database (encrypted) + Secure vault,Yes
+
+Access Control Matrix,,,,,
+Role,Public Access,Private Access,Confidential Access,Restricted Access,
+Student,Read,Read (own data only),Read (own data only),No access,
+Faculty,Read,Read (all students),Read (all students),No access,
+Admin,Read/Write,Read/Write,Read/Write,Read/Write,
+
+Data Retention Policy,,,,,
+Data Type,Retention Period,Deletion Method,Backup Frequency,Compliance Notes,
+Student Records,7 years after graduation,Secure deletion + blockchain record,Daily,GDPR compliant - right to erasure upon request
+Exam Records,10 years,Secure deletion + blockchain record,Daily,Academic record keeping requirements
+Authentication Logs,1 year,Automatic purge,Weekly,Security audit trail
+Blockchain Records,Permanent,Immutable - cannot be deleted,Real-time,Transparency and integrity verification

@@ -1,0 +1,57 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Security Configuration - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-database"></i> Data Classification</h5>
+                <div class="mt-3">
+                    {% for category, items in data_classification.items() %}
+                    <div class="mb-3">
+                        <h6 class="text-uppercase">
+                            {% if category == 'PUBLIC' %}
+                            <span class="badge bg-success">{{ category }}</span>
+                            {% elif category == 'PRIVATE' %}
+                            <span class="badge bg-info">{{ category }}</span>
+                            {% elif category == 'CONFIDENTIAL' %}
+                            <span class="badge bg-warning">{{ category }}</span>
+                            {% else %}
+                            <span class="badge bg-danger">{{ category }}</span>
+                            {% endif %}
+                        </h6>
+                        <ul class="small">
+                            {% for item in items %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-user-shield"></i> Role Permissions</h5>
+                <div class="mt-3">
+                    {% for role_key, role_data in roles.items() %}
+                    <div class="mb-3">
+                        <h6><span class="badge bg-primary">{{ role_data.name }}</span></h6>
+                        <ul class="small">
+                            {% for permission in role_data.permissions %}
+                            <li>{{ permission.replace('_', ' ').title() }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

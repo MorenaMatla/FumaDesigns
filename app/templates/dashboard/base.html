@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="dashboard-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-header p-4">
+            <h4 class="text-white fw-bold">Exam System</h4>
+        </div>
+        
+        <div class="user-info p-4 border-bottom border-secondary">
+            <p class="text-white-50 mb-1">{{ greeting }}!</p>
+            <h6 class="text-white fw-bold">{{ current_user.name }}</h6>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('dashboard.index') }}" class="sidebar-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-search"></i> Search
+            </a>
+            <a href="{{ url_for('dashboard.messages') }}" class="sidebar-link {% if request.endpoint == 'dashboard.messages' %}active{% endif %}">
+                <i class="fas fa-envelope"></i> Messages
+                {% if unread_messages > 0 %}
+                <span class="badge bg-danger ms-auto">{{ unread_messages }}</span>
+                {% endif %}
+            </a>
+            <a href="{{ url_for('exams.register') }}" class="sidebar-link {% if request.endpoint == 'exams.register' %}active{% endif %}">
+                <i class="fas fa-edit"></i> Register for exams
+            </a>
+            <a href="{{ url_for('dashboard.calendar') }}" class="sidebar-link {% if request.endpoint == 'dashboard.calendar' %}active{% endif %}">
+                <i class="fas fa-calendar"></i> Calendar
+            </a>
+            <a href="{{ url_for('exams.view_registered') }}" class="sidebar-link {% if request.endpoint == 'exams.view_registered' %}active{% endif %}">
+                <i class="fas fa-list"></i> View registered exams
+            </a>
+            
+            {% if current_user.has_permission('view_analytics') %}
+            <div class="sidebar-divider"></div>
+            <a href="{{ url_for('ai_analytics.index') }}" class="sidebar-link {% if request.endpoint == 'ai_analytics.index' %}active{% endif %}">
+                <i class="fas fa-chart-line"></i> AI Analytics
+            </a>
+            <a href="{{ url_for('admin.index') }}" class="sidebar-link {% if 'admin' in request.endpoint %}active{% endif %}">
+                <i class="fas fa-cog"></i> Admin Panel
+            </a>
+            {% endif %}
+            
+            <div class="sidebar-divider"></div>
+            <a href="{{ url_for('dashboard.settings') }}" class="sidebar-link {% if request.endpoint == 'dashboard.settings' %}active{% endif %}">
+                <i class="fas fa-sliders-h"></i> Settings
+            </a>
+            <a href="{{ url_for('dashboard.support') }}" class="sidebar-link {% if request.endpoint == 'dashboard.support' %}active{% endif %}">
+                <i class="fas fa-question-circle"></i> Support
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="sidebar-link text-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="content-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="text-muted mb-1">{{ greeting }}!</h5>
+                    <h3 class="fw-bold">{{ current_user.name }}</h3>
+                </div>
+                <div>
+                    <a href="{{ url_for('dashboard.messages') }}" class="btn btn-outline-primary position-relative">
+                        <i class="fas fa-envelope"></i> Messages
+                        {% if unread_messages > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ unread_messages }}
+                        </span>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-body">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

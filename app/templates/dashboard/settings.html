@@ -1,0 +1,72 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Settings - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title fw-bold mb-4">Account Settings</h4>
+                
+                <div class="mb-4">
+                    <h6>Profile Information</h6>
+                    <p><strong>Name:</strong> {{ current_user.name }}</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                    <p><strong>Student ID:</strong> {{ current_user.student_id }}</p>
+                    <p><strong>Role:</strong> <span class="badge bg-info">{{ current_user.role }}</span></p>
+                </div>
+                
+                <div class="mb-4">
+                    <h6>Privacy & Data</h6>
+                    <p>
+                        <strong>GDPR Consent:</strong> 
+                        {% if current_user.gdpr_consent %}
+                        <span class="badge bg-success">Accepted</span>
+                        {% else %}
+                        <span class="badge bg-warning">Not Accepted</span>
+                        {% endif %}
+                    </p>
+                    {% if current_user.gdpr_consent_date %}
+                    <p><small class="text-muted">Accepted on: {{ current_user.gdpr_consent_date.strftime('%B %d, %Y') }}</small></p>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-4">
+                    <h6>Security</h6>
+                    <button class="btn btn-outline-primary btn-sm">Change Password</button>
+                    <button class="btn btn-outline-danger btn-sm ms-2">Enable Two-Factor Authentication</button>
+                </div>
+                
+                <div>
+                    <h6>Notifications</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                        <label class="form-check-label" for="emailNotifications">
+                            Email notifications for exam updates
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="reminderNotifications" checked>
+                        <label class="form-check-label" for="reminderNotifications">
+                            Exam reminders
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6 class="card-title">Quick Actions</h6>
+                <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-outline-primary btn-sm">Download My Data</button>
+                    <button class="btn btn-outline-warning btn-sm">Request Account Deletion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

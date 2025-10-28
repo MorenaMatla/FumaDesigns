@@ -1,0 +1,74 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard - Exam Registration System{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-graduation-cap text-primary"></i> Quick Actions</h5>
+                <div class="d-grid gap-2 mt-3">
+                    <a href="{{ url_for('exams.register') }}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Register for New Exam
+                    </a>
+                    <a href="{{ url_for('exams.view_registered') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-list"></i> View My Registered Exams
+                    </a>
+                    <a href="{{ url_for('dashboard.calendar') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-calendar"></i> View Exam Calendar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-info-circle text-info"></i> Account Information</h5>
+                <div class="mt-3">
+                    <p><strong>Student ID:</strong> {{ current_user.student_id }}</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                    <p><strong>Role:</strong> <span class="badge bg-info">{{ current_user.role }}</span></p>
+                    <p><strong>Member Since:</strong> {{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-clock text-success"></i> Recent Registrations</h5>
+                {% if recent_registrations %}
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Exam Date</th>
+                                <th>Venue</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reg in recent_registrations %}
+                            <tr>
+                                <td>{{ reg.exam.course.name }}</td>
+                                <td>{{ reg.exam.exam_date.strftime('%B %d, %Y') }}</td>
+                                <td>{{ reg.exam.venue or 'TBA' }}</td>
+                                <td><span class="badge bg-success">{{ reg.status.capitalize() }}</span></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted mt-3">No exam registrations yet. <a href="{{ url_for('exams.register') }}">Register now</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

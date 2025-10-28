@@ -1,0 +1,41 @@
+GDPR Article,Requirement,Implementation Status,Implementation Details,Evidence Location
+Article 6 - Lawfulness,Legal basis for processing,Implemented,User consent required during registration with timestamp tracking,app/models/user.py - gdpr_consent field
+Article 7 - Consent,Conditions for consent,Implemented,Explicit checkbox consent before account creation with date logging,app/templates/auth/signup.html - consent checkbox
+Article 12 - Transparency,Transparent information,Implemented,Clear privacy policy and terms displayed during signup,app/templates/auth/signup.html
+Article 13 - Information,Information to be provided,Partially Implemented,Privacy notice shown at registration (full policy page to be added),app/routes/auth.py
+Article 15 - Right of Access,Data subject access,Planned,Data export feature in development for user settings page,app/templates/dashboard/settings.html
+Article 16 - Rectification,Right to rectification,Planned,Profile edit functionality to be implemented,Settings page
+Article 17 - Erasure,Right to be forgotten,Planned,Account deletion request feature with admin approval,Support system
+Article 25 - Data Protection by Design,Privacy by design,Implemented,Role-based access control and data classification from start,config.py + app/utils/decorators.py
+Article 30 - Records,Processing records,Implemented,Blockchain maintains immutable audit trail of all registrations,app/utils/blockchain.py
+Article 32 - Security,Security of processing,Implemented,"Password hashing (Werkzeug), HTTPS ready, rate limiting, session security",app/models/user.py + app/__init__.py
+Article 33 - Breach Notification,Breach notification,Planned,Admin notification system for security events,To be implemented
+Article 35 - Impact Assessment,Data protection impact assessment,Completed,Risk assessment conducted for student data and exam records,Documentation folder
+
+Data Processing Activities,,,,,
+Purpose,Data Categories,Legal Basis,Recipients,Retention Period,
+User Authentication,"Email, password hash, student ID",Consent + Contractual necessity,System administrators only,Account lifetime + 1 year,
+Exam Registration,"Student info, course selection, exam dates",Consent + Contractual necessity,Student + Faculty + Admin,7 years post-graduation,
+Performance Analytics,"Registration trends, anonymized performance data",Legitimate interest,Faculty + Admin,3 years,
+Communication,"Email, messages, notifications",Consent,Student + Faculty,1 year,
+Audit Logging,"Access logs, blockchain records",Legal obligation,Admin only,Permanent (blockchain) / 1 year (logs),
+
+Data Subject Rights,,,,,
+Right,Description,How to Exercise,Response Time,Status,
+Right to Access,Request copy of personal data,Settings > Download My Data,30 days,Planned,
+Right to Rectification,Correct inaccurate data,Settings > Edit Profile,30 days,Planned,
+Right to Erasure,Delete personal data,Settings > Request Deletion,30 days,Planned,
+Right to Restrict Processing,Limit how data is used,Contact Support,30 days,Planned,
+Right to Data Portability,Receive data in portable format,Settings > Export Data,30 days,Planned,
+Right to Object,Object to processing,Contact Support,30 days,Planned,
+
+Security Measures,,,,,
+Measure,Type,Implementation,Effectiveness,Review Frequency,
+Password Hashing,Technical,Werkzeug SHA256 with salt,High,Quarterly,
+Session Management,Technical,Flask-Login with secure cookies,High,Quarterly,
+Rate Limiting,Technical,Flask-Limiter on auth endpoints,Medium,Monthly,
+Role-Based Access Control,Organizational,Permission decorators and role checks,High,Quarterly,
+Data Classification,Organizational,4-tier system (Public/Private/Confidential/Restricted),High,Semi-annually,
+Blockchain Integrity,Technical,SHA256 hash chain with verification,High,Real-time monitoring,
+HTTPS Encryption,Technical,TLS 1.3 ready for production,High,Quarterly,
+Input Validation,Technical,Form validation and sanitization,Medium,Monthly,
